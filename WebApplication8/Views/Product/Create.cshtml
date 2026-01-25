@@ -1,0 +1,17 @@
+﻿<h2>Добавить новый товар</h2>
+
+<form method="post">
+    <p>Название: <br /><input type="text" name="Name" required style="width:300px; padding:5px;"></p>
+    <p>Категория: <br /><input type="text" name="Category" required style="width:300px; padding:5px;"></p>
+    <p>Цена: <br /><input type="number" step="0.01" name="Price" required style="width:300px; padding:5px;"></p>
+    <p>Количество: <br /><input type="number" name="Quantity" required style="width:300px; padding:5px;"></p>
+
+    <p>
+        <button type="submit" style="background:green; color:white; padding:10px 20px; border:none;">
+            Добавить товар
+        </button>
+        <a href="/Product" style="background:gray; color:white; padding:10px 20px; text-decoration:none; margin-left:10px;">
+            Отмена
+        </a>
+    </p>
+</form>

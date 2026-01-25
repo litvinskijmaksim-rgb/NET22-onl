@@ -1,0 +1,70 @@
+﻿@using System.Linq
+@model List<WebApplication8.Models.Product>
+    <h2>Список товаров на складе</h2>
+
+
+<p>
+    <a href="/Report/TotalValue" style="background:green; color:white; padding:10px; text-decoration:none;">
+        Общая стоимость
+    </a>
+    <a href="/Report/CategorySummary" style="background:blue; color:white; padding:10px; text-decoration:none; margin-left:10px;">
+        По категориям
+    </a>
+</p>
+
+
+<p>
+    <a href="/Product/Create" style="background:orange; color:white; padding:10px; text-decoration:none;">
+        Добавить новый товар
+    </a>
+</p>
+
+@if (Model.Count > 0)
+{
+    <table border="1" cellpadding="10" width="100%">
+        <tr style="background-color:#f2f2f2">
+            <th>Название</th>
+            <th>Категория</th>
+            <th>Цена</th>
+            <th>Кол-во</th>
+            <th>Стоимость</th>
+            <th>Действия</th>
+        </tr>
+
+        @foreach (var product in Model)
+        {
+            <tr>
+                <td>@product.Name</td>
+                <td>@product.Category</td>
+                <td>@product.Price руб.</td>
+                <td>@product.Quantity</td>
+                <td><b>@(product.Price* product.Quantity) руб.</b></td>
+                <td>
+                    <a href="/Product/Edit/@product.Id" style="background:gray; color:white; padding:5px; text-decoration:none;">
+                        Изменить
+                    </a>
+                    <a href="/Product/Delete/@product.Id" style="background:red; color:white; padding:5px; text-decoration:none; margin-left:5px;"
+                       onclick="return confirm('Удалить @product.Name?')">
+                        Удалить
+                    </a>
+                </td>
+            </tr>
+        }
+
+        
+        @{
+            var total = Model.Sum(p => p.Price * p.Quantity);
+        }
+        <tr style="background-color:#e8f4f8">
+            <td colspan="4" align="right"><b>ИТОГО:</b></td>
+            <td><b>@total руб.</b></td>
+            <td></td>
+        </tr>
+    </table>
+}
+else
+{
+    <p style="color:gray; font-size:18px;">
+        На складе нет товаров. Добавьте первый товар!
+    </p>
+}
