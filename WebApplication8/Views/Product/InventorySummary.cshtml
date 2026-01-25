@@ -1,0 +1,83 @@
+﻿@{
+    ViewData["Title"] = "Сводка по инвентарю";
+}
+
+<h1>📊 Полная сводка по инвентарю</h1>
+
+
+<div style="background:#e8f4f8; padding:20px; margin:20px 0; border-radius:10px;">
+    <h2>📈 Общая статистика</h2>
+    <p><b>Всего товаров:</b> @ViewBag.ProductCount шт.</p>
+    <p><b>Общая стоимость:</b> <span style="color:green; font-size:24px;">@ViewBag.TotalValue руб.</span></p>
+</div>
+
+<div style="background:#f0f8ff; padding:20px; margin:20px 0; border-radius:10px;">
+    <h2>🏷️ Стоимость по категориям</h2>
+
+    @if (ViewBag.Categories.Count > 0)
+    {
+    <table border="1" cellpadding="10" width="50%">
+        <tr style="background-color:#d6eaf8">
+            <th>Категория</th>
+            <th>Стоимость</th>
+        </tr>
+        @foreach (var item in ViewBag.Categories)
+            {
+        <tr>
+            <td>@item.Key</td>
+            <td><b>@item.Value руб.</b></td>
+        </tr>
+            }
+    </table>
+    }
+    else
+    {
+    <p>Нет данных по категориям</p>
+    }
+</div>
+
+
+<div style="background:#fef9e7; padding:20px; margin:20px 0; border-radius:10px;">
+    <h2>📦 Все товары на складе</h2>
+
+    @if (ViewBag.Products.Count > 0)
+    {
+    <table border="1" cellpadding="10" width="100%">
+        <tr style="background-color:#fcf3cf">
+            <th>Название</th>
+            <th>Категория</th>
+            <th>Цена</th>
+            <th>Кол-во</th>
+            <th>Стоимость</th>
+        </tr>
+
+        @foreach (var product in ViewBag.Products)
+            {
+        <tr>
+            <td>@product.Name</td>
+            <td>@product.Category</td>
+            <td>@product.Price руб.</td>
+            <td>@product.Quantity</td>
+            <td><b>@(product.Price * product.Quantity) руб.</b></td>
+        </tr>
+            }
+    </table>
+    }
+    else
+    {
+    <p style="color:gray;">На складе нет товаров</p>
+    }
+</div>
+
+
+<div style="margin-top:30px;">
+    <a href="/Product" style="background:#3498db; color:white; padding:10px 20px; text-decoration:none; border-radius:5px;">
+        📋 К обычному списку
+    </a>
+    <a href="/Report/TotalValue" style="background:#27ae60; color:white; padding:10px 20px; text-decoration:none; border-radius:5px; margin-left:10px;">
+        💰 Только общая стоимость
+    </a>
+    <a href="/Product/Create" style="background:#e67e22; color:white; padding:10px 20px; text-decoration:none; border-radius:5px; margin-left:10px;">
+        ➕ Добавить товар
+    </a>
+</div>
