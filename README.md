@@ -6,6 +6,7 @@
 ## Database
 |  |
 | ------- |
+| [0176-second-highest-salary](https://github.com/litvinskijmaksim-rgb/NET22-onl/tree/master/0176-second-highest-salary) |
 | [0584-find-customer-referee](https://github.com/litvinskijmaksim-rgb/NET22-onl/tree/master/0584-find-customer-referee) |
 | [0595-big-countries](https://github.com/litvinskijmaksim-rgb/NET22-onl/tree/master/0595-big-countries) |
 | [0596-classes-with-at-least-5-students](https://github.com/litvinskijmaksim-rgb/NET22-onl/tree/master/0596-classes-with-at-least-5-students) |
