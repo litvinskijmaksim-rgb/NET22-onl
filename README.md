@@ -15,4 +15,5 @@
 | [1581-customer-who-visited-but-did-not-make-any-transactions](https://github.com/litvinskijmaksim-rgb/NET22-onl/tree/master/1581-customer-who-visited-but-did-not-make-any-transactions) |
 | [1683-invalid-tweets](https://github.com/litvinskijmaksim-rgb/NET22-onl/tree/master/1683-invalid-tweets) |
 | [1757-recyclable-and-low-fat-products](https://github.com/litvinskijmaksim-rgb/NET22-onl/tree/master/1757-recyclable-and-low-fat-products) |
+| [2356-number-of-unique-subjects-taught-by-each-teacher](https://github.com/litvinskijmaksim-rgb/NET22-onl/tree/master/2356-number-of-unique-subjects-taught-by-each-teacher) |
 <!---LeetCode Topics End-->
