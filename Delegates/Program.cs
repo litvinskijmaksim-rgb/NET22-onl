@@ -247,7 +247,7 @@ public class Program
         livingRoomLamp.ReactToEvent(testEvent);
         userApp.ReactToEvent(testEvent);
 
-        Console.WriteLine("\n=== СИСТЕМА ОСТАНОВЛЕНА ===");
+        Console.WriteLine("\n=== СИСТЕМА ОСТАНОВЛЕНА, СПАСИБО ЗА ВНИМАНИЕ!  ===");
 
         Console.ReadKey();
     }
