@@ -1,0 +1,83 @@
+﻿@{
+    ViewData["Title"] = "Главная - CookBook";
+}
+
+<div class="text-center" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 20px; padding: 60px 20px; color: white; margin-bottom: 40px;">
+    <h1 class="display-3 fw-bold">🍳 CookBook</h1>
+    <p class="lead mt-3">Твой личный каталог кулинарных шедевров</p>
+    <p class="mb-4">Тысячи рецептов со всего мира у тебя под рукой</p>
+    <a asp-controller="Recipes" asp-action="Index" class="btn btn-light btn-lg px-4 py-2 fw-bold" style="border-radius: 30px;">
+        🔍 Начать готовить
+    </a>
+</div>
+
+<div class="row text-center">
+    
+    <div class="col-md-4 mb-4">
+        <a asp-controller="Recipes" asp-action="Index" class="text-decoration-none">
+            <div class="card h-100 shadow-sm transition-card">
+                <div class="card-body">
+                    <div class="display-1">📚</div>
+                    <h3 class="card-title mt-3">25+ Рецептов</h3>
+                    <p class="card-text">Коллекция блюд на любой вкус: от салатов до десертов</p>
+                    <span class="btn btn-outline-primary mt-2">Перейти к рецептам →</span>
+                </div>
+            </div>
+        </a>
+    </div>
+    
+    
+    <div class="col-md-4 mb-4">
+        <a asp-controller="Recipes" asp-action="TopRated" class="text-decoration-none">
+            <div class="card h-100 shadow-sm transition-card">
+                <div class="card-body">
+                    <div class="display-1">⭐</div>
+                    <h3 class="card-title mt-3">Лучшие оценки</h3>
+                    <p class="card-text">Рецепты с рейтингом 4.8+ звезд от пользователей</p>
+                    <span class="btn btn-outline-warning mt-2">Смотреть топ рецепты →</span>
+                </div>
+            </div>
+        </a>
+    </div>
+    
+    <
+    <div class="col-md-4 mb-4">
+        <a asp-controller="Recipes" asp-action="Favorites" class="text-decoration-none">
+            <div class="card h-100 shadow-sm transition-card">
+                <div class="card-body">
+                    <div class="display-1">❤️</div>
+                    <h3 class="card-title mt-3">Избранное</h3>
+                    <p class="card-text">Твои сохраненные рецепты, которые ждут тебя</p>
+                    <span class="btn btn-outline-danger mt-2" id="favoritesCountBtn">Перейти к избранному →</span>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>
+
+
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="alert alert-info text-center shadow-sm">
+            <strong>🍽️ Совет дня:</strong> Готовь с любовью — это главный секрет вкусных блюд!
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function updateFavoritesCount() {
+            var favorites = localStorage.getItem("favoriteRecipes");
+            var count = favorites ? JSON.parse(favorites).length : 0;
+            var btn = document.getElementById("favoritesCountBtn");
+            if (btn) {
+                btn.innerHTML = count > 0 ? `❤️ Избранное (${count}) →` : "📭 Избранное пусто →";
+            }
+        }
+        
+        updateFavoritesCount();
+        
+        
+        window.addEventListener("storage", updateFavoritesCount);
+    </script>
+}

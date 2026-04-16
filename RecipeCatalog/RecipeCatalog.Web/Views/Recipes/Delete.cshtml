@@ -1,0 +1,43 @@
+﻿@model RecipeCatalog.Data.Entities.Recipe
+
+@{
+    ViewData["Title"] = "Удалить рецепт - CookBook";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg border-0">
+                <div class="card-header bg-danger text-white text-center" style="border-radius: 15px 15px 0 0;">
+                    <h2 class="mb-0">🗑️ Удалить рецепт</h2>
+                    <p class="mb-0 mt-2">Вы уверены, что хотите удалить этот рецепт?</p>
+                </div>
+                
+                <div class="card-body p-4">
+                    <div class="alert alert-warning">
+                        <strong>⚠️ Внимание!</strong> Это действие нельзя отменить.
+                    </div>
+                    
+                    <dl class="row">
+                        <dt class="col-sm-3">Название</dt>
+                        <dd class="col-sm-9">@Model.Title</dd>
+                        
+                        <dt class="col-sm-3">Категория</dt>
+                        <dd class="col-sm-9">@Model.Category?.Name</dd>
+                        
+                        <dt class="col-sm-3">Время приготовления</dt>
+                        <dd class="col-sm-9">@Model.CookingTimeMinutes мин</dd>
+                    </dl>
+                    
+                    <form asp-action="Delete">
+                        <input type="hidden" asp-for="Id" />
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <a asp-action="Index" class="btn btn-secondary btn-lg me-md-2">← Назад</a>
+                            <button type="submit" class="btn btn-danger btn-lg">🗑️ Подтвердить удаление</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,14 @@
+D:\Новая папка (2)\RecipeCatalog\RecipeCatalog.Data\bin\Debug\net10.0\RecipeCatalog.Data.deps.json
+D:\Новая папка (2)\RecipeCatalog\RecipeCatalog.Data\bin\Debug\net10.0\RecipeCatalog.Data.runtimeconfig.json
+D:\Новая папка (2)\RecipeCatalog\RecipeCatalog.Data\bin\Debug\net10.0\RecipeCatalog.Data.dll
+D:\Новая папка (2)\RecipeCatalog\RecipeCatalog.Data\bin\Debug\net10.0\RecipeCatalog.Data.pdb
+D:\Новая папка (2)\RecipeCatalog\RecipeCatalog.Data\obj\Debug\net10.0\RecipeCatalog.Data.csproj.AssemblyReference.cache
+D:\Новая папка (2)\RecipeCatalog\RecipeCatalog.Data\obj\Debug\net10.0\RecipeCatalog.Data.GeneratedMSBuildEditorConfig.editorconfig
+D:\Новая папка (2)\RecipeCatalog\RecipeCatalog.Data\obj\Debug\net10.0\RecipeCatalog.Data.AssemblyInfoInputs.cache
+D:\Новая папка (2)\RecipeCatalog\RecipeCatalog.Data\obj\Debug\net10.0\RecipeCatalog.Data.AssemblyInfo.cs
+D:\Новая папка (2)\RecipeCatalog\RecipeCatalog.Data\obj\Debug\net10.0\RecipeCatalog.Data.csproj.CoreCompileInputs.cache
+D:\Новая папка (2)\RecipeCatalog\RecipeCatalog.Data\obj\Debug\net10.0\RecipeCatalog.Data.dll
+D:\Новая папка (2)\RecipeCatalog\RecipeCatalog.Data\obj\Debug\net10.0\refint\RecipeCatalog.Data.dll
+D:\Новая папка (2)\RecipeCatalog\RecipeCatalog.Data\obj\Debug\net10.0\RecipeCatalog.Data.pdb
+D:\Новая папка (2)\RecipeCatalog\RecipeCatalog.Data\obj\Debug\net10.0\RecipeCatalog.Data.genruntimeconfig.cache
+D:\Новая папка (2)\RecipeCatalog\RecipeCatalog.Data\obj\Debug\net10.0\ref\RecipeCatalog.Data.dll
