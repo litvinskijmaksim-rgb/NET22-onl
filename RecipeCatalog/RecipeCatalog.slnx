@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="RecipeCatalog.Data/RecipeCatalog.Data.csproj" />
+  <Project Path="RecipeCatalog.Services/RecipeCatalog.Services.csproj" />
+  <Project Path="RecipeCatalog.Tests/RecipeCatalog.Tests.csproj" />
+  <Project Path="RecipeCatalog.Web/RecipeCatalog.Web.csproj" />
+</Solution>

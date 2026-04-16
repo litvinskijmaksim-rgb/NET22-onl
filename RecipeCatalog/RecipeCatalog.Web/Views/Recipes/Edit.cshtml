@@ -1,0 +1,73 @@
+﻿@model RecipeCatalog.Data.Entities.Recipe
+
+@{
+    ViewData["Title"] = "Редактировать рецепт - CookBook";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg border-0">
+                <div class="card-header bg-warning text-dark text-center" style="border-radius: 15px 15px 0 0;">
+                    <h2 class="mb-0">✏️ Редактировать рецепт</h2>
+                    <p class="mb-0 mt-2">Внеси изменения в свой кулинарный шедевр</p>
+                </div>
+                
+                <div class="card-body p-4">
+                    <form asp-action="Edit">
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+                        <input type="hidden" asp-for="Id" />
+                        <input type="hidden" asp-for="IsUserCreated" />
+                        <input type="hidden" asp-for="AverageRating" />
+                        
+                        <div class="form-group mb-3">
+                            <label asp-for="Title" class="form-label fw-bold">🍽️ Название блюда</label>
+                            <input asp-for="Title" class="form-control" />
+                            <span asp-validation-for="Title" class="text-danger"></span>
+                        </div>
+                        
+                        <div class="form-group mb-3">
+                            <label asp-for="Description" class="form-label fw-bold">📖 Краткое описание</label>
+                            <input asp-for="Description" class="form-control" />
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group mb-3">
+                                    <label asp-for="CategoryId" class="form-label fw-bold">📂 Категория</label>
+                                    <select asp-for="CategoryId" class="form-select" asp-items="ViewBag.Categories"></select>
+                                    <span asp-validation-for="CategoryId" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-3">
+                                    <label asp-for="CookingTimeMinutes" class="form-label fw-bold">⏱️ Время приготовления</label>
+                                    <input asp-for="CookingTimeMinutes" class="form-control" />
+                                    <span asp-validation-for="CookingTimeMinutes" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group mb-3">
+                            <label asp-for="Instructions" class="form-label fw-bold">👨‍🍳 Способ приготовления</label>
+                            <textarea asp-for="Instructions" class="form-control" rows="10"></textarea>
+                            <span asp-validation-for="Instructions" class="text-danger"></span>
+                        </div>
+                        
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <a asp-action="Index" class="btn btn-secondary btn-lg me-md-2">← Назад</a>
+                            <button type="submit" class="btn btn-warning btn-lg">💾 Сохранить изменения</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

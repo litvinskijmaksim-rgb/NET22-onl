@@ -1,0 +1,155 @@
+﻿@model IEnumerable<RecipeCatalog.Data.Entities.Recipe>
+
+@{
+    ViewData["Title"] = "Все рецепты - CookBook";
+}
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h1 class="display-5 fw-bold text-primary">🍽️ Все рецепты</h1>
+            <p class="text-muted">@Model.Count() рецептов со всего мира</p>
+        </div>
+        <a asp-action="Create" class="btn btn-success btn-lg shadow-sm">
+            ➕ Добавить рецепт
+        </a>
+    </div>
+
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        @foreach (var item in Model)
+        {
+            <div class="col position-relative">
+                <a asp-action="Details" asp-route-id="@item.Id" class="text-decoration-none text-dark">
+                    <div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden">
+                        <div class="bg-gradient text-white text-center py-4" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                            <span class="display-1">🍳</span>
+                        </div>
+                
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <h5 class="card-title fw-bold">@item.Title</h5>
+                            </div>
+                            <p class="card-text text-muted">@item.Description</p>
+                            <p class="card-text">
+                                <small class="text-muted">
+                                    📂 @item.Category?.Name<br />
+                                    ⏱️ @item.CookingTimeMinutes мин<br />
+                                    ⭐ @item.AverageRating.ToString("0.0")
+                                </small>
+                            </p>
+                    
+                           
+                            @if (item.IsUserCreated)
+                            {
+                                <div class="mt-2">
+                                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning" onclick="event.stopPropagation();">✏️ Редактировать</a>
+                                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger" onclick="event.stopPropagation();">🗑️ Удалить</a>
+                                </div>
+                            }
+                            
+                    
+                        </div>
+                    </div>
+                </a>
+        
+                <!-- Кнопка избранного -->
+                <button class="btn-favorite btn btn-sm btn-outline-danger position-absolute top-0 end-0 m-2"
+                        data-id="@item.Id"
+                        onclick="event.stopPropagation();">
+                    🤍
+                </button>
+            </div>
+        }
+
+
+@section Scripts {
+    <script>
+        // Функция для получения избранного из localStorage
+        function getFavorites() {
+            var favorites = localStorage.getItem("favoriteRecipes");
+            return favorites ? JSON.parse(favorites) : [];
+        }
+        
+        // Функция для сохранения избранного
+        function saveFavorites(favorites) {
+            localStorage.setItem("favoriteRecipes", JSON.stringify(favorites));
+        }
+        
+        // Функция проверки, находится ли рецепт в избранном
+        function isFavorite(recipeId) {
+            var favorites = getFavorites();
+            return favorites.includes(recipeId.toString());
+        }
+        
+        // Функция обновления всех кнопок при загрузке страницы
+        function updateAllFavoriteButtons() {
+            document.querySelectorAll(".btn-favorite").forEach(function(button) {
+                var recipeId = button.getAttribute("data-id");
+                if (isFavorite(recipeId)) {
+                    button.textContent = "❤️";
+                    button.classList.remove("btn-outline-danger");
+                    button.classList.add("btn-danger");
+                } else {
+                    button.textContent = "🤍";
+                    button.classList.remove("btn-danger");
+                    button.classList.add("btn-outline-danger");
+                }
+            });
+        }
+        
+        // Функция добавления/удаления из избранного
+        function toggleFavorite(recipeId, button) {
+            var favorites = getFavorites();
+            var idStr = recipeId.toString();
+            var index = favorites.indexOf(idStr);
+            
+            if (index === -1) {
+                favorites.push(idStr);
+                button.textContent = "❤️";
+                button.classList.remove("btn-outline-danger");
+                button.classList.add("btn-danger");
+                showNotification("✅ Добавлено в избранное!");
+            } else {
+                favorites.splice(index, 1);
+                button.textContent = "🤍";
+                button.classList.remove("btn-danger");
+                button.classList.add("btn-outline-danger");
+                showNotification("🗑️ Удалено из избранного");
+            }
+            
+            saveFavorites(favorites);
+        }
+        
+        // Функция показа уведомления
+        function showNotification(message) {
+            var notification = document.createElement("div");
+            notification.textContent = message;
+            notification.style.position = "fixed";
+            notification.style.bottom = "20px";
+            notification.style.right = "20px";
+            notification.style.backgroundColor = "#28a745";
+            notification.style.color = "white";
+            notification.style.padding = "10px 20px";
+            notification.style.borderRadius = "5px";
+            notification.style.zIndex = "9999";
+            document.body.appendChild(notification);
+            
+            setTimeout(function() {
+                notification.remove();
+            }, 2000);
+        }
+        
+        // Навешиваем обработчики на кнопки
+        document.querySelectorAll(".btn-favorite").forEach(function(button) {
+            button.addEventListener("click", function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                var recipeId = this.getAttribute("data-id");
+                toggleFavorite(recipeId, this);
+            });
+        });
+        
+        // Обновляем состояние кнопок при загрузке страницы
+        updateAllFavoriteButtons();
+    </script>
+}
